@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Helena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sepia-dark: #2b1a0e;
+    --sepia-mid: #4a2e17;
+    --sepia-paper: #ecdcb8;
+    --hamon-blue: #4fc3e0;
+    --hamon-purple: #8b5fbf;
+    --gold: #d4a017;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'EB Garamond', serif;
+    color: var(--sepia-paper);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-gif {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.6) brightness(0.35) contrast(1.1);
+    z-index: -2;
+    opacity: 0;
+    animation: scene-cycle 18s ease-in-out infinite;
+  }
+
+  .bg-gif.scene2 { animation-delay: 6s; }
+  .bg-gif.scene3 { animation-delay: 12s; }
+
+  @keyframes scene-cycle {
+    0%   { opacity: 0; }
+    5%   { opacity: 1; }
+    28%  { opacity: 1; }
+    33%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  .bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 45%, rgba(43,26,14,0.55) 0%, rgba(43,26,14,0.9) 100%);
+    z-index: -1;
+  }
+
+  .ripple {
+    position: fixed;
+    border: 3px solid var(--hamon-blue);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: ripple-out 4s ease-out infinite;
+    z-index: 0;
+  }
+  .ripple.r2 { animation-delay: 1.3s; border-color: var(--hamon-purple); }
+  .ripple.r3 { animation-delay: 2.6s; border-color: var(--gold); }
+
+  @keyframes ripple-out {
+    0%   { width: 20px; height: 20px; opacity: 0.9; }
+    100% { width: 1400px; height: 1400px; opacity: 0; }
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    width: 100%;
+    padding: 40px 30px;
+    text-align: center;
+  }
+
+  .title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    margin: 0 0 30px;
+    text-shadow:
+      -2px -2px 0 var(--sepia-dark),
+      2px -2px 0 var(--sepia-dark),
+      -2px 2px 0 var(--sepia-dark),
+      2px 2px 0 var(--sepia-dark),
+      0 0 20px var(--hamon-blue);
+    letter-spacing: 1px;
+  }
+
+  .message {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    line-height: 1.8;
+    background: rgba(43,26,14,0.55);
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    padding: 30px 34px;
+  }
+
+  .sticker {
+    position: fixed;
+    width: 110px;
+    border-radius: 10px;
+    border: 3px solid var(--sepia-paper);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    z-index: 2;
+    animation: sticker-float 5s ease-in-out infinite;
+  }
+
+  .sticker.one {
+    top: 6%;
+    left: 5%;
+    transform: rotate(-10deg);
+  }
+
+  .sticker.two {
+    bottom: 6%;
+    right: 5%;
+    width: 130px;
+    transform: rotate(8deg);
+    animation-delay: 1.5s;
+  }
+
+  @keyframes sticker-float {
+    0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+    50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+  }
+
+  .sticker.one { --rot: -10deg; }
+  .sticker.two { --rot: 8deg; }
+
+  @media (max-width: 700px) {
+    .sticker { width: 80px; }
+    .sticker.two { width: 95px; }
+  }
+</style>
+</head>
+<body>
+
+<img class="bg-gif scene1" src="assets/scene1.gif" alt="">
+<img class="bg-gif scene2" src="assets/scene2.gif" alt="">
+<img class="bg-gif scene3" src="assets/scene3.gif" alt="">
+<div class="bg-overlay"></div>
+
+<div class="ripple r1"></div>
+<div class="ripple r2"></div>
+<div class="ripple r3"></div>
+
+<img class="sticker one" src="assets/polnareff1.gif" alt="Polnareff sticker">
+<img class="sticker two" src="assets/polnareff2.gif" alt="Polnareff sticker">
+
+<div class="content">
+  <h1 class="title">Happy Birthday, Helena</h1>
+  <p class="message">
+    Thank you for a year full of happy memories. Every laugh, every quiet evening, every small
+    moment and every inside joke added up to something I will always treasure. You have made
+    ordinary days feel special and hard days feel lighter, and I am so grateful I got to share
+    all of it with you. Here is to celebrating you today, and to many more years of memories
+    still waiting to be made.
+  </p>
+</div>
+
+</body>
+</html>
